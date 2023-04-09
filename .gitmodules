@@ -4,3 +4,6 @@
 [submodule "ocpp-management-service"]
 	path = ocpp-management-service
 	url = https://github.com/agruenb/ocpp-management-service.git
+[submodule "realtime-ocpp-web-ui"]
+	path = realtime-ocpp-web-ui
+	url = https://github.com/agruenb/realtime-ocpp-web-ui.git
