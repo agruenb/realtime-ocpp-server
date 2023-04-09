@@ -1,0 +1,6 @@
+[submodule "ocpp-client-service"]
+	path = ocpp-client-service
+	url = https://github.com/agruenb/ocpp-client-service.git
+[submodule "ocpp-management-service"]
+	path = ocpp-management-service
+	url = https://github.com/agruenb/ocpp-management-service.git
