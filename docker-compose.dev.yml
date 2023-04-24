@@ -1,0 +1,17 @@
+version: "3.3"
+
+services:
+  mariadb:
+    container_name: MariaDB
+    build:
+      context: ./sql-db
+      dockerfile: ./dev.Dockerfile
+    ports:
+      - "3306:3306"
+  redis:
+    container_name: Redis
+    build:
+      context: ./redis
+      dockerfile: ./dev.Dockerfile
+    ports:
+     - "6379:6379"
