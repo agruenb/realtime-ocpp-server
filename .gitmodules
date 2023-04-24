@@ -7,3 +7,6 @@
 [submodule "realtime-ocpp-web-ui"]
 	path = realtime-ocpp-web-ui
 	url = https://github.com/agruenb/realtime-ocpp-web-ui.git
+[submodule "test/ocpp-tester"]
+	path = test/ocpp-tester
+	url = https://github.com/agruenb/ocpp-tester.git
