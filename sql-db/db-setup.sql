@@ -28,87 +28,22 @@ SET time_zone = "+00:00";
 -- Tabellenstruktur für Tabelle `started_transactions`
 --
 
-CREATE TABLE `started_transactions` (
-  `id` int(15) NOT NULL,
-  `ocppIdentity` varchar(255) NOT NULL,
-  `connectorId` int(15) NOT NULL,
-  `timestamp` varchar(255) NOT NULL,
-  `idTag` varchar(255) NOT NULL,
-  `meterStart` int(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+create table stations
+(
+    id           int(63) auto_increment primary key,
+    ocppIdentity varchar(511) not null,
+    name         varchar(255) not null,
+    constraint ocppIdentity unique (ocppIdentity)
+);
 
--- --------------------------------------------------------
-
---
--- Tabellenstruktur für Tabelle `stations`
---
-
-CREATE TABLE `stations` (
-  `id` int(63) NOT NULL,
-  `ocppIdentity` varchar(511) NOT NULL,
-  `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Tabellenstruktur für Tabelle `stopped_transactions`
---
-
-CREATE TABLE `stopped_transactions` (
-  `id` int(12) NOT NULL,
-  `startedTransactionId` int(12) NOT NULL,
-  `timestamp` varchar(255) NOT NULL,
-  `meterStop` int(12) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Indizes der exportierten Tabellen
---
-
---
--- Indizes für die Tabelle `started_transactions`
---
-ALTER TABLE `started_transactions`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indizes für die Tabelle `stations`
---
-ALTER TABLE `stations`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `ocppIdentity` (`ocppIdentity`);
-
---
--- Indizes für die Tabelle `stopped_transactions`
---
-ALTER TABLE `stopped_transactions`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `started_transaction_id` (`startedTransactionId`);
-
---
--- AUTO_INCREMENT für exportierte Tabellen
---
-
---
--- AUTO_INCREMENT für Tabelle `started_transactions`
---
-ALTER TABLE `started_transactions`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT für Tabelle `stations`
---
-ALTER TABLE `stations`
-  MODIFY `id` int(63) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT für Tabelle `stopped_transactions`
---
-ALTER TABLE `stopped_transactions`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+create table transactions
+(
+    id             int(15) auto_increment primary key,
+    ocppIdentity   varchar(255) not null,
+    connectorId    int(15)      not null,
+    timestampStart varchar(255) not null,
+    idTag          varchar(255) not null,
+    meterStart     int(15)      not null,
+    timestampStop  varchar(255) null,
+    meterStop      int(12)      null
+);
